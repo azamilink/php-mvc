@@ -10,12 +10,12 @@ class App
   {
     $url = $this->parseURL();
 
-    // untuk folder publik
+    // untuk controller jika value-nya kosong / null
     if ($url == null) {
       $url = [$this->controller];
     }
 
-    // untuk controller
+    // untuk controller jika ada value-nya
     if (file_exists('../app/controllers/' . $url[0] . '.php')) {
       $this->controller = $url[0];
       unset($url[0]);

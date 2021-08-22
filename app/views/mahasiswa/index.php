@@ -1,23 +1,48 @@
 <div class="mt-4">
+  <!-- pesan singkat untuk aksi -->
   <div class="row">
     <div class="col-lg-6">
       <?php Flasher::flash(); ?>
     </div>
   </div>
-  <div class="row">
+  <!-- end -->
+
+  <!-- tombol untuk tambah data mahasiswa -->
+  <div class="row mb-2">
     <div class="col-lg-6">
       <button type="button" class="btn btn-primary tombolTambahData" data-toggle="modal" data-target="#formModal">
         Tambah Data Mahasiswa
       </button>
-      <br><br>
+    </div>
+  </div>
+  <!-- end -->
+
+  <!-- input & tombol pencarian mahasiswa -->
+  <div class="row">
+    <div class="col-lg-6">
+      <form action="<?= BASEURL; ?>/mahasiswa/cari" method="POST">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Cari Mahasiswa.." name="keyword" id="keyword">
+          <div class="input-group-append">
+            <button class="btn btn-success" type="submit" id="cari">Cari</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- end -->
+
+  <!-- tampilkan daftar mahasiswa -->
+  <div class="row">
+    <div class="col-lg-6">
       <h3>Daftar Mahasiswa</h3>
       <ul class="list-group">
         <?php foreach ($data['mhs'] as $mhs) : ?>
           <li class="list-group-item">
             <?= $mhs['nama']; ?>
             <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">hapus</a>
-            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge badge-success float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
-            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-primary float-right ml-1">detail</a>
+            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge badge-warning float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
+            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-info float-right ml-1">detail</a>
           </li>
         <?php endforeach; ?>
       </ul>
@@ -62,10 +87,11 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Tambah Data</button>
+          <button type="submit" class="btn btn-success">Tambah Data</button>
           </form>
         </div>
       </div>
     </div>
   </div>
+  <!-- end -->
 </div>
